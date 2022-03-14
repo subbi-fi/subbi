@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Button from "components/Button";
-import Wallet from "components/icons/wallet.svg";
+import Wallet from "components/MetamaskButton/wallet.svg";
 
 export default {
   title: "Button",
