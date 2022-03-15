@@ -46,8 +46,8 @@ export const ENV_TO_USDC_CONTRACT_ADDRESS: {
   polygon: "",
   mumbai: "0xe6b8a5cf854791412c1f6efc7caf629f5df1c747",
 };
-export const MAX_UINT = ethers.BigNumber.from("2").pow(
-  ethers.BigNumber.from("256").sub(ethers.BigNumber.from("1"))
-);
+export const MAX_UINT = ethers.BigNumber.from("2")
+  .pow(ethers.BigNumber.from("256").sub(ethers.BigNumber.from("1")))
+  .toString();
 export const ONE_USDC = 1000000;
 export const ONE_USDC_CENT = 10000;
