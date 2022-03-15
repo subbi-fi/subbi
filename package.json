@@ -1,5 +1,5 @@
 {
-  "name": "subbi",
+  "name": "@subbi/react",
   "version": "0.0.1",
   "description": "components to assist in handling subscribers backed by subbi smart contracts",
   "main": "index.js",
@@ -11,8 +11,10 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "files": ["lib/*"],
   "devDependencies": {
     "@babel/core": "^7.17.4",
+    "@babel/preset-typescript": "^7.16.7",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-interactions": "^6.4.19",

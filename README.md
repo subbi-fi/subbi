@@ -1,5 +1,9 @@
 # Subbi - Decentralised Subscriptions
 
-## WIP : Coming Soon
+## Installation
 
-Here lies the repository housing the frontend components to start accepting decentralised payments and managing locked content! Coming to an NPM registry near you.
+`yarn add @subbi/react`
+
+## Documentation
+
+[Check out the docs](https://docs.subbi.fi)

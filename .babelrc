@@ -1,0 +1,21 @@
+{
+  "presets": [
+    ["@babel/preset-typescript",
+      {
+        "isTsx": true
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+          "root": [
+          "./src"
+        ]
+      }
+    ],
+    "inline-react-svg"
+  ]
+}
