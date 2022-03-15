@@ -1,3 +1,5 @@
+import React from "react";
+
 import { green500 } from "config/styles";
 import Spinner from "./loading.svg";
 

@@ -1,5 +1,6 @@
 {
   "presets": [
+    "@babel/preset-env",
     ["@babel/preset-typescript",
       {
         "isTsx": true
@@ -16,6 +17,12 @@
         ]
       }
     ],
-    "inline-react-svg"
+    "inline-react-svg",
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true 
+      }
+    ]
   ]
 }

@@ -9,11 +9,18 @@
   "private": false,
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "babel src -d lib -x \".ts,.tsx\"",
+    "generate-types": "tsc -p tsconfig.production.json",
+    "prepublish": "rm -rf ./lib && yarn build && yarn generate-types"
   },
-  "files": ["lib/*"],
+  "files": [
+    "lib/*"
+  ],
   "devDependencies": {
+    "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.4",
+    "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
@@ -25,6 +32,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-styled-components": "^2.0.6",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -35,5 +43,9 @@
     "@web3-react/core": "6.1.9",
     "@web3-react/injected-connector": "6.0.7",
     "ethers": "5.6.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

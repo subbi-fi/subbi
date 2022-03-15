@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "outDir": "lib",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "baseUrl": "./src",
+    "jsx": "react",
+    "esModuleInterop": true
+  },
+  "include": [
+    "./src"
+  ],
+}
