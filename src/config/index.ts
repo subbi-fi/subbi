@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import { SupportedNetworks, NetworkParams } from "types/ethereum";
 
 export const WEB_3_ROOT_KEY = "@subbi/web3";
+export const DEFAULT_ENV = "polygon";
 export const ENV_TO_CHAIN_ID = {
   polygon: 137,
   mumbai: 80001,

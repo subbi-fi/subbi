@@ -28,6 +28,7 @@ const primaryButtonStyle = {
   borderRadius: "8px",
   color: green50,
   padding: "10px",
+  height: "45px",
   width: "200px",
   fontSize: "14px",
   fontWeight: 500,

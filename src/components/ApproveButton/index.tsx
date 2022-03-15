@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from "react";
 import { ethers } from "ethers";
-import { useWeb3React } from "@web3-react/core";
 
 import Button from "components/Button";
 import { useUSDCContract } from "hooks/contracts";
+import { useSubbiContext } from "context/SubbiProvider";
 import { IApproveButton } from "types/props";
-import { MAX_UINT, WEB_3_ROOT_KEY } from "config";
+import { MAX_UINT } from "config";
 
 const ApproveButton = ({
   subscriptionContractAddress,
@@ -15,7 +15,7 @@ const ApproveButton = ({
 }: IApproveButton) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const usdc = useUSDCContract();
-  const { account } = useWeb3React(WEB_3_ROOT_KEY);
+  const { account } = useSubbiContext();
 
   const handleApproval = useCallback(async () => {
     if (!usdc) {
@@ -36,7 +36,7 @@ const ApproveButton = ({
           if (onApproval) {
             await onApproval();
           }
-          Promise.resolve();
+          return;
         }
       }
 

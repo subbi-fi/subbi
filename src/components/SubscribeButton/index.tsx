@@ -1,10 +1,9 @@
 import React, { useCallback, useState } from "react";
-import { useWeb3React } from "@web3-react/core";
 
 import Button from "components/Button";
+import { useSubbiContext } from "context/SubbiProvider";
 import { useSubscriptionContract } from "hooks/contracts";
 import { ISubscribeButton } from "types/props";
-import { WEB_3_ROOT_KEY } from "config";
 
 const SubscribeButton = ({
   subscriptionContractAddress,
@@ -14,7 +13,7 @@ const SubscribeButton = ({
 }: ISubscribeButton) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const subscription = useSubscriptionContract(subscriptionContractAddress);
-  const { account } = useWeb3React(WEB_3_ROOT_KEY);
+  const { account } = useSubbiContext();
 
   const handleSubscribe = useCallback(async () => {
     if (!subscription) {
@@ -31,7 +30,7 @@ const SubscribeButton = ({
           if (onSubscribed) {
             await onSubscribed();
           }
-          Promise.resolve();
+          return;
         }
       }
 

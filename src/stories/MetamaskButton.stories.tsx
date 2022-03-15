@@ -14,7 +14,7 @@ export const JustTheButton: ComponentStory<typeof MetamaskButton> = () => (
 );
 
 export const WithMumbaiProvider: ComponentStory<typeof MetamaskButton> = () => (
-  <SubbiProvider network="mumbai">
+  <SubbiProvider network="mumbai" useInactiveListener>
     <MetamaskButton />
   </SubbiProvider>
 );
@@ -22,7 +22,7 @@ export const WithMumbaiProvider: ComponentStory<typeof MetamaskButton> = () => (
 export const WithPolygonProvider: ComponentStory<
   typeof MetamaskButton
 > = () => (
-  <SubbiProvider network="polygon">
+  <SubbiProvider network="polygon" useInactiveListener>
     <MetamaskButton />
   </SubbiProvider>
 );

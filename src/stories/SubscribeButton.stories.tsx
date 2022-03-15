@@ -14,7 +14,7 @@ export const JustTheButton: ComponentStory<typeof SubscribeButton> = () => (
 );
 
 export const WithProvider: ComponentStory<typeof SubscribeButton> = () => (
-  <SubbiProvider network="mumbai">
+  <SubbiProvider network="mumbai" useInactiveListener>
     <SubscribeButton subscriptionContractAddress="0xf597b825fd898fe3d5b58ca3a31ac9607e4c6412" />
   </SubbiProvider>
 );

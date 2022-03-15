@@ -4,18 +4,15 @@ import { useWeb3React } from "@web3-react/core";
 import Button from "components/Button";
 import Wallet from "./wallet.svg";
 
+import { useSubbiContext } from "context/SubbiProvider";
 import { injected } from "config/connectors";
 import { WEB_3_ROOT_KEY, SUPPORTED_CHAIN_IDS } from "config";
-import { SupportedNetworks } from "types/ethereum";
 import { switchNetwork } from "./utils";
 
-const MetamaskButton = ({
-  network = "polygon",
-}: {
-  network?: SupportedNetworks;
-}) => {
+const MetamaskButton = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { active, account, chainId, activate } = useWeb3React(WEB_3_ROOT_KEY);
+  const { network, active, account, chainId } = useSubbiContext();
+  const { activate } = useWeb3React(WEB_3_ROOT_KEY);
 
   const activateMetamask = async () => {
     setIsLoading(true);

@@ -14,7 +14,7 @@ export const JustTheButton: ComponentStory<typeof ApproveButton> = () => (
 );
 
 export const WithProvider: ComponentStory<typeof ApproveButton> = () => (
-  <SubbiProvider network="mumbai">
+  <SubbiProvider network="mumbai" useInactiveListener>
     <ApproveButton subscriptionContractAddress="0xf597b825fd898fe3d5b58ca3a31ac9607e4c6412" />
   </SubbiProvider>
 );
