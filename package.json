@@ -1,8 +1,9 @@
 {
   "name": "@subbi/react",
   "version": "0.0.1",
-  "description": "components to assist in handling subscribers backed by subbi smart contracts",
-  "main": "index.js",
+  "description": "React components to assist in handling subscribers backed by subbi smart contracts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/subbi-fi/subbi",
   "author": "subbi",
   "license": "MIT",
@@ -10,12 +11,12 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "babel src -d lib -x \".ts,.tsx\"",
+    "build": "babel src -d dist -x \".ts,.tsx\"",
     "generate-types": "tsc -p tsconfig.production.json",
-    "prepublish": "rm -rf ./lib && yarn build && yarn generate-types"
+    "prepublish": "rm -rf ./dist && yarn build && yarn generate-types && sudo cp package.json dist"
   },
   "files": [
-    "lib/*"
+    "dist/**"
   ],
   "devDependencies": {
     "@babel/cli": "^7.17.6",
@@ -36,16 +37,15 @@
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.3.3",
     "typescript": "^4.5.5"
   },
   "dependencies": {
     "@web3-react/core": "6.1.9",
     "@web3-react/injected-connector": "6.0.7",
-    "ethers": "5.6.0"
+    "ethers": "5.6.0",
+    "styled-components": "5.3.3"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": ">=16.8.0"
   }
 }
