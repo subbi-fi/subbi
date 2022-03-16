@@ -20,6 +20,10 @@ export interface ISubscribeButton extends IContractButtons {
   onSubscribed?: () => void | Promise<void>;
 }
 
+export interface ICancelButton extends IContractButtons {
+  onCancelled?: () => void | Promise<void>;
+}
+
 export interface ICheckoutFlow {
   subscriptionContractAddress: string;
   showWeb3Connection: boolean;
