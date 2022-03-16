@@ -3,10 +3,13 @@ type Style = {
   [x: string]: string | number | {};
 } & React.CSSProperties;
 
-interface IContractButtons {
-  subscriptionContractAddress: string;
+export interface IOptionalButtonProps {
   onError?: (error: any) => void | Promise<void>;
   style?: Style;
+}
+
+interface IContractButtons extends IOptionalButtonProps {
+  subscriptionContractAddress: string;
 }
 
 export interface IApproveButton extends IContractButtons {
@@ -22,4 +25,9 @@ export interface ICheckoutFlow {
   showWeb3Connection: boolean;
   onError?: (error: any) => void | Promise<void>;
   styles?: { [key in CheckoutStep]: Style };
+  onSuccessHandlers?: {
+    [key in "connect" | "approve" | "subscribe"]:
+      | (() => void | Promise<void>)
+      | undefined;
+  };
 }

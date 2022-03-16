@@ -23,11 +23,17 @@ const defaultStyles = {
   complete: {},
   connect: {},
 };
+const defaultSuccessHandlers = {
+  approve: undefined,
+  subscribe: undefined,
+  connect: undefined,
+};
 const CheckoutFlow = ({
   subscriptionContractAddress,
   showWeb3Connection,
   styles = defaultStyles,
   onError,
+  onSuccessHandlers = defaultSuccessHandlers,
 }: ICheckoutFlow) => {
   const [checkoutStep, setCheckoutStep] = useState<CheckoutStep>(
     showWeb3Connection ? CHECKOUT_STEPS.connect : CHECKOUT_STEPS.approve
@@ -37,16 +43,23 @@ const CheckoutFlow = ({
   useEffect(() => {
     if (!!account && active && checkoutStep === CHECKOUT_STEPS.connect) {
       setCheckoutStep(CHECKOUT_STEPS.approve);
+      if (onSuccessHandlers.connect) {
+        onSuccessHandlers.connect();
+      }
     }
   }, [account, active, checkoutStep]);
-  const handleOnApproval = useCallback(
-    () => setCheckoutStep(CHECKOUT_STEPS.subscribe),
-    []
-  );
-  const handleOnSubscribed = useCallback(
-    () => setCheckoutStep(CHECKOUT_STEPS.complete),
-    []
-  );
+  const handleOnApproval = useCallback(() => {
+    setCheckoutStep(CHECKOUT_STEPS.subscribe);
+    if (onSuccessHandlers.approve) {
+      onSuccessHandlers.approve();
+    }
+  }, []);
+  const handleOnSubscribed = useCallback(() => {
+    setCheckoutStep(CHECKOUT_STEPS.complete);
+    if (onSuccessHandlers.subscribe) {
+      onSuccessHandlers.subscribe();
+    }
+  }, []);
 
   return (
     <Container>
