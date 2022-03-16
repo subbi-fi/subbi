@@ -12,9 +12,14 @@
     [
       "module-resolver",
       {
-          "root": [
-          "./src"
-        ]
+          "root": ["./"],
+          "alias": {
+            "components": "./src/components",
+            "config": "./src/config",
+            "context": "./src/context",
+            "hooks": "./src/hooks",
+            "types": "./src/types"
+          }
       }
     ],
     "inline-react-svg",
@@ -24,5 +29,6 @@
         "ssr": true 
       }
     ]
-  ]
+  ],
+  "ignore": ["./src/stories/**/*"]
 }

@@ -13,7 +13,7 @@
     "build-storybook": "build-storybook",
     "build": "babel src -d dist -x \".ts,.tsx\"",
     "generate-types": "tsc -p tsconfig.production.json",
-    "prepublish": "rm -rf ./dist && yarn build && yarn generate-types && sudo cp package.json dist"
+    "prepublish": "rm -rf ./dist && yarn build && yarn generate-types"
   },
   "files": [
     "dist/**"

@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "strict": true,
-    "outDir": "lib",
+    "outFile": "dist/index.d.ts",
     "emitDeclarationOnly": true,
     "declaration": true,
     "baseUrl": "./src",
@@ -13,4 +13,11 @@
   "include": [
     "./src"
   ],
+  "exclude": [
+    "./src/stories/**/*",
+    "./src/index.ts",
+    "./src/components/index.ts",
+    "./src/hooks/index.ts",
+    "./src/components/**/styles.ts"
+  ]
 }
