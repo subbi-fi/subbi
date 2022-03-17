@@ -28,9 +28,9 @@ export interface ICheckoutFlow {
   subscriptionContractAddress: string;
   showWeb3Connection: boolean;
   onError?: (error: any) => void | Promise<void>;
-  styles?: { [key in CheckoutStep]: Style };
+  styles?: { [key in CheckoutStep]?: Style };
   onSuccessHandlers?: {
-    [key in "connect" | "approve" | "subscribe"]:
+    [key in "connect" | "approve" | "subscribe"]?:
       | (() => void | Promise<void>)
       | undefined;
   };
