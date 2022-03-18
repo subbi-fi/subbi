@@ -42,6 +42,7 @@ const MetamaskButton = ({ style, onError }: IOptionalButtonProps) => {
     <>
       {!isConnected && (
         <Button
+          data-testid="Wallet-ConnectButton"
           variant="ghost"
           onClick={activateMetamask}
           loading={isLoading}
@@ -52,7 +53,12 @@ const MetamaskButton = ({ style, onError }: IOptionalButtonProps) => {
         </Button>
       )}
       {isConnected && (
-        <Button variant="ghost" loading={isLoading} style={style}>
+        <Button
+          data-testid="Wallet-ConnectedInfo"
+          variant="ghost"
+          loading={isLoading}
+          style={style}
+        >
           {account.slice(0, 5)}...{account.slice(-3)} Connected
         </Button>
       )}

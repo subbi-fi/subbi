@@ -71,7 +71,7 @@ describe("Approve Button", () => {
     expect(mockApprove).toHaveBeenCalledWith("0xADDRESS", MAX_UINT);
   });
 
-  it("if a users allowance is equal tot he maximum uint then approval is not requested. onApproval is still called if specified", async () => {
+  it("if a users allowance is equal to the maximum uint then approval is not requested. onApproval is still called if specified", async () => {
     jest.spyOn(subbiProvider, "useSubbiContext").mockImplementation(() => ({
       account: "0xUSER_ADDRESS",
       network: "mumbai",

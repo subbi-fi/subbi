@@ -41,7 +41,7 @@ const CancelButton = ({
         await onCancelled();
       }
     } catch (error) {
-      console.log("Error subscribing to contract: ", error);
+      console.log("Error cancelling subscription to contract: ", error);
 
       if (onError) {
         await onError(error);
