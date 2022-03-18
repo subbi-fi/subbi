@@ -18,6 +18,9 @@
     "./src/index.ts",
     "./src/components/index.ts",
     "./src/hooks/index.ts",
-    "./src/components/**/styles.ts"
+    "./src/components/**/styles.ts",
+    "./src/test/*",
+    "./src/**/*.test.tsx",
+    "./src/**/*.test.ts",
   ]
 }

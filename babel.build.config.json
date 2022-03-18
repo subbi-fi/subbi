@@ -30,5 +30,10 @@
       }
     ]
   ],
-  "ignore": ["./src/stories/**/*"]
+  "ignore": [
+    "./src/stories/**/*",
+    "./src/**/*.test.tsx",
+    "./src/**/*.test.ts",
+    "./src/test/**/*"
+  ]
 }
