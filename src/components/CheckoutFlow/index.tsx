@@ -87,6 +87,7 @@ const CheckoutFlow = ({
       {checkoutStep === CHECKOUT_STEPS.complete && (
         <SlideLeft>
           <Button
+            data-testid="CheckoutFlow-Complete"
             disabled
             variant="primary"
             style={styles[CHECKOUT_STEPS.complete]}

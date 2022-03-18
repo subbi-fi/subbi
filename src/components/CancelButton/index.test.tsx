@@ -21,9 +21,7 @@ jest.mock("hooks/contracts", () => ({
 }));
 
 describe("Cancel Button", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  beforeEach(jest.clearAllMocks);
 
   it("renders with the default props and runs the handleCancel function when clicked. Once all the actions are complete the loader disappears", async () => {
     render(<CancelButton subscriptionContractAddress="0xADDRESS" />);

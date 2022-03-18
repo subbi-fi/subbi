@@ -27,8 +27,9 @@ const SubscribeButton = ({
         const isSubscribed = await subscription.isSubscribed(account);
 
         if (isSubscribed) {
+          setIsLoading(false);
           if (onSubscribed) {
-            await onSubscribed();
+            onSubscribed();
           }
           return;
         }
@@ -37,22 +38,23 @@ const SubscribeButton = ({
       const tx = await subscription.subscribe();
       await tx.wait();
 
+      setIsLoading(false);
       if (onSubscribed) {
-        await onSubscribed();
+        onSubscribed();
       }
     } catch (error) {
       console.log("Error subscribing to contract: ", error);
 
-      if (onError) {
-        await onError(error);
-      }
-    } finally {
       setIsLoading(false);
+      if (onError) {
+        onError(error);
+      }
     }
   }, [subscription]);
 
   return (
     <Button
+      data-testid="Button-SubscribeButton"
       style={style}
       variant="primary"
       onClick={handleSubscribe}

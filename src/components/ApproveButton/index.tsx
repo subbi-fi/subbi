@@ -33,8 +33,9 @@ const ApproveButton = ({
         if (
           ethers.BigNumber.from(allowance).eq(ethers.BigNumber.from(MAX_UINT))
         ) {
+          setIsLoading(false);
           if (onApproval) {
-            await onApproval();
+            onApproval();
           }
           return;
         }
@@ -43,22 +44,23 @@ const ApproveButton = ({
       const tx = await usdc.approve(subscriptionContractAddress, MAX_UINT);
       await tx.wait();
 
+      setIsLoading(false);
       if (onApproval) {
-        await onApproval();
+        onApproval();
       }
     } catch (error) {
       console.log("Error requesting approval: ", error);
 
-      if (onError) {
-        await onError(error);
-      }
-    } finally {
       setIsLoading(false);
+      if (onError) {
+        onError(error);
+      }
     }
   }, [usdc, onError, onApproval]);
 
   return (
     <Button
+      data-testid="Button-ApproveButton"
       variant="primary"
       loading={isLoading}
       onClick={handleApproval}

@@ -22,9 +22,7 @@ jest.mock("hooks/contracts", () => ({
 }));
 
 describe("Approve Button", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  beforeEach(jest.clearAllMocks);
 
   it("renders with the default props and runs the handleApproval function when clicked. Once all the actions are complete the loader disappears", async () => {
     render(<ApproveButton subscriptionContractAddress="0xADDRESS" />);

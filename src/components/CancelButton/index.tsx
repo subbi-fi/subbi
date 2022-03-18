@@ -27,8 +27,9 @@ const CancelButton = ({
         const isSubscribed = await subscription.isSubscribed(account);
 
         if (!isSubscribed) {
+          setIsLoading(false);
           if (onCancelled) {
-            await onCancelled();
+            onCancelled();
           }
           return;
         }
@@ -37,22 +38,23 @@ const CancelButton = ({
       const tx = await subscription.cancelSubscription();
       await tx.wait();
 
+      setIsLoading(false);
       if (onCancelled) {
-        await onCancelled();
+        onCancelled();
       }
     } catch (error) {
       console.log("Error cancelling subscription to contract: ", error);
 
-      if (onError) {
-        await onError(error);
-      }
-    } finally {
       setIsLoading(false);
+      if (onError) {
+        onError(error);
+      }
     }
   }, [subscription]);
 
   return (
     <Button
+      data-testid="Button-CancelButton"
       style={style}
       variant="ghost"
       onClick={handleCancel}

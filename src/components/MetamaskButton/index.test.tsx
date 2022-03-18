@@ -15,9 +15,7 @@ import MetamaskButton from "components/MetamaskButton";
 jest.mock("@web3-react/core");
 const mockActivate = jest.fn();
 describe("Metamask Button", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  beforeEach(jest.clearAllMocks);
 
   it("renders with the default props and runs the activateMetamask function when clicked. Once all the actions are complete the loader disappears", async () => {
     jest.spyOn(web3React, "useWeb3React").mockImplementation(() => ({

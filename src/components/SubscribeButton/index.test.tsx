@@ -21,9 +21,7 @@ jest.mock("hooks/contracts", () => ({
 }));
 
 describe("Subscribe Button", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  beforeEach(jest.clearAllMocks);
 
   it("renders with the default props and runs the handleSubscribe function when clicked. Once all the actions are complete the loader disappears", async () => {
     render(<SubscribeButton subscriptionContractAddress="0xADDRESS" />);
