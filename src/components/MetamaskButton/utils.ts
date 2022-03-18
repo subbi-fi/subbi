@@ -17,14 +17,14 @@ export const switchNetwork = async (network: SupportedNetworks) => {
       ],
     });
   } catch (error: any) {
-    console.log("Error switching network", error, error.code);
+    console.log("Error switching network", error, error?.code);
     try {
       await ethereum.request({
         method: "wallet_addEthereumChain",
         params: [ENV_TO_SWITCH_PARAMS[network]],
       });
     } catch (error: any) {
-      alert(error.message);
+      alert(error?.message);
     }
   }
 };
