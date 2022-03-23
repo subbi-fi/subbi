@@ -44,7 +44,7 @@ export const SUPPORTED_CHAIN_IDS = [
 export const ENV_TO_USDC_CONTRACT_ADDRESS: {
   [key in SupportedNetworks]: string;
 } = {
-  polygon: "",
+  polygon: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
   mumbai: "0xe6b8a5cf854791412c1f6efc7caf629f5df1c747",
 };
 export const MAX_UINT = ethers.BigNumber.from("2")
