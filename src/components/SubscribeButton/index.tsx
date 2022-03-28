@@ -13,7 +13,7 @@ const SubscribeButton = ({
 }: ISubscribeButton) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const subscription = useSubscriptionContract(subscriptionContractAddress);
-  const { account } = useSubbiContext();
+  const { account, network } = useSubbiContext();
 
   const handleSubscribe = useCallback(async () => {
     if (!subscription) {
@@ -29,7 +29,11 @@ const SubscribeButton = ({
         if (isSubscribed) {
           setIsLoading(false);
           if (onSubscribed) {
-            onSubscribed();
+            onSubscribed({
+              user: account,
+              network,
+              contract: subscriptionContractAddress,
+            });
           }
           return;
         }
@@ -40,7 +44,11 @@ const SubscribeButton = ({
 
       setIsLoading(false);
       if (onSubscribed) {
-        onSubscribed();
+        onSubscribed({
+          user: account || "",
+          network,
+          contract: subscriptionContractAddress,
+        });
       }
     } catch (error) {
       console.log("Error subscribing to contract: ", error);

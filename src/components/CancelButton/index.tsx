@@ -13,7 +13,7 @@ const CancelButton = ({
 }: ICancelButton) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const subscription = useSubscriptionContract(subscriptionContractAddress);
-  const { account } = useSubbiContext();
+  const { account, network } = useSubbiContext();
 
   const handleCancel = useCallback(async () => {
     if (!subscription) {
@@ -29,7 +29,11 @@ const CancelButton = ({
         if (!isSubscribed) {
           setIsLoading(false);
           if (onCancelled) {
-            onCancelled();
+            onCancelled({
+              user: account,
+              network,
+              contract: subscriptionContractAddress,
+            });
           }
           return;
         }
@@ -40,7 +44,11 @@ const CancelButton = ({
 
       setIsLoading(false);
       if (onCancelled) {
-        onCancelled();
+        onCancelled({
+          user: account || "",
+          network,
+          contract: subscriptionContractAddress,
+        });
       }
     } catch (error) {
       console.log("Error cancelling subscription to contract: ", error);

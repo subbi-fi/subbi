@@ -6,7 +6,7 @@ import ApproveButton from "components/ApproveButton";
 import SubscribeButton from "components/SubscribeButton";
 import Button from "components/Button";
 
-import { ICheckoutFlow, CheckoutStep } from "types/props";
+import { ICheckoutFlow, CheckoutStep, OnActionProps } from "types/props";
 
 import { Container, SlideLeft } from "./styles";
 
@@ -38,26 +38,30 @@ const CheckoutFlow = ({
   const [checkoutStep, setCheckoutStep] = useState<CheckoutStep>(
     showWeb3Connection ? CHECKOUT_STEPS.connect : CHECKOUT_STEPS.approve
   );
-  const { account, active } = useSubbiContext();
+  const { account, active, network } = useSubbiContext();
 
   useEffect(() => {
     if (!!account && active && checkoutStep === CHECKOUT_STEPS.connect) {
       setCheckoutStep(CHECKOUT_STEPS.approve);
       if (onSuccessHandlers.connect) {
-        onSuccessHandlers.connect();
+        onSuccessHandlers.connect({
+          user: account,
+          network,
+          contract: subscriptionContractAddress,
+        });
       }
     }
   }, [account, active, checkoutStep]);
-  const handleOnApproval = useCallback(() => {
+  const handleOnApproval = useCallback((props: OnActionProps) => {
     setCheckoutStep(CHECKOUT_STEPS.subscribe);
     if (onSuccessHandlers.approve) {
-      onSuccessHandlers.approve();
+      onSuccessHandlers.approve(props);
     }
   }, []);
-  const handleOnSubscribed = useCallback(() => {
+  const handleOnSubscribed = useCallback((props: OnActionProps) => {
     setCheckoutStep(CHECKOUT_STEPS.complete);
     if (onSuccessHandlers.subscribe) {
-      onSuccessHandlers.subscribe();
+      onSuccessHandlers.subscribe(props);
     }
   }, []);
 

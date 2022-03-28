@@ -8,6 +8,10 @@ If you haven't already, head over to [Subbi](https://subbi.fi) to create your su
 
 `yarn add @subbi/react`
 
+or
+
+`npm install @subbi/react`
+
 ## Features
 
 - Handles adding and switching networks if a user's browser wallet does not have the configuration for the network your Subbi contract is deployed to (e.g Polygon).

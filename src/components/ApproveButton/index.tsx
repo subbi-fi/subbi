@@ -15,7 +15,7 @@ const ApproveButton = ({
 }: IApproveButton) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const usdc = useUSDCContract();
-  const { account } = useSubbiContext();
+  const { account, network } = useSubbiContext();
 
   const handleApproval = useCallback(async () => {
     if (!usdc) {
@@ -35,7 +35,11 @@ const ApproveButton = ({
         ) {
           setIsLoading(false);
           if (onApproval) {
-            onApproval();
+            onApproval({
+              user: account,
+              network,
+              contract: subscriptionContractAddress,
+            });
           }
           return;
         }
@@ -46,7 +50,11 @@ const ApproveButton = ({
 
       setIsLoading(false);
       if (onApproval) {
-        onApproval();
+        onApproval({
+          user: account || "",
+          network,
+          contract: subscriptionContractAddress,
+        });
       }
     } catch (error) {
       console.log("Error requesting approval: ", error);
