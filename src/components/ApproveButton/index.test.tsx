@@ -48,7 +48,11 @@ describe("Approve Button", () => {
       screen.getAllByTestId("LoadingSpinner")
     );
     expect(mockApprove).toHaveBeenCalledWith("0xADDRESS", MAX_UINT);
-    expect(mockOnApproval).toHaveBeenCalled();
+    expect(mockOnApproval).toHaveBeenCalledWith({
+      contract: "0xADDRESS",
+      network: "polygon",
+      user: "",
+    });
   });
 
   it("if an account is connected then the allowance of the given user is first checked before approving spending", async () => {

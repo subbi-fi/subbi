@@ -47,7 +47,11 @@ describe("Cancel Button", () => {
       screen.getAllByTestId("LoadingSpinner")
     );
     expect(mockCancelSubscription).toHaveBeenCalled();
-    expect(mockOnCancelled).toHaveBeenCalled();
+    expect(mockOnCancelled).toHaveBeenCalledWith({
+      contract: "0xADDRESS",
+      network: "polygon",
+      user: "",
+    });
   });
 
   it("if an account is connected then the subscription status of the given user is first checked before cancelling the subscription", async () => {

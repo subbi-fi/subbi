@@ -47,7 +47,11 @@ describe("Subscribe Button", () => {
       screen.getAllByTestId("LoadingSpinner")
     );
     expect(mockSubscribe).toHaveBeenCalled();
-    expect(mockOnSubscribed).toHaveBeenCalled();
+    expect(mockOnSubscribed).toHaveBeenCalledWith({
+      contract: "0xADDRESS",
+      network: "polygon",
+      user: "",
+    });
   });
 
   it("if an account is connected then the subscription status of the given user is first checked before subscribing", async () => {
